@@ -2,7 +2,9 @@ provider "aws" {
   region = var.aws_region
 }
 
-provider "cloudflare" {}
+provider "cloudflare" {
+  api_token = "${var.cloudflare_token}"
+}
 
 resource "aws_s3_bucket" "site" {
   bucket = var.site_domain
