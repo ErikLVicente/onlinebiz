@@ -9,7 +9,7 @@ variable "site_domain" {
   description = "The domain name to use for the static site"
 }
 
-variable "cloudflare_token" {
+variable "cloudflare_api_token" {
   type        = string
   description = "cloudflare_token"
 }
