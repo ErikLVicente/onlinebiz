@@ -14,9 +14,7 @@ jobs:
         uses: actions/cache@v1
         id: yarn-cache
         with:
-          path: node_modules
-          key:${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: ${{ runner.os }}-yarn-
+          path: website
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
