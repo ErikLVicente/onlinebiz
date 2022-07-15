@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 provider "cloudflare" {
-  api_token = "${var.cloudflare_token}"
+  api_token = var.cloudflare_token
 }
 
 resource "aws_s3_bucket" "site" {
