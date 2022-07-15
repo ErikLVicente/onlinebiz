@@ -23,13 +23,14 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.S3_BUCKET_REGION }}
+          cloudflare_api_token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       - name: 'Init'
         run: |
           terraform init -upgrade
         working-directory: terraform
       - name: 'Terraform apply'
         run: |
-          terraform apply -var-file="terraform.tfvars" -var 'CLOUDFLARE_API_TOKEN=${{ secrets.CLOUDFLARE_API_TOKEN }}' -auto-approve
+          terraform apply -var-file="terraform.tfvars" -auto-approve
         working-directory: terraform
   
   # deploy:
