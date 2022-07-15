@@ -11,5 +11,5 @@ variable "site_domain" {
 
 variable "cloudflare_token" {
   type        = string
-  description = "cloudflare token"
+  description = "cloudflare_token"
 }
