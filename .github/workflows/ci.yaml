@@ -6,7 +6,8 @@ on:
       - main
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: 'terraform'
+    needs: [notify_start]
     env:
       AWS_ACCESS_KEY_ID: '${{ secrets.AWS_ACCESS_KEY_ID }}'
       AWS_SECRET_ACCESS_KEY: '${{ secrets.AWS_SECRET_ACCESS_KEY }}'
@@ -22,8 +23,6 @@ jobs:
           no-cache: true
           private: true
 
-    runs-on: 'terraform'
-    needs: [notify_start]
     steps:
       - uses: actions/checkout@v2
       - uses: hashicorp/setup-terraform@v1
