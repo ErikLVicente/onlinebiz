@@ -2,9 +2,7 @@ provider "aws" {
   region = var.aws_region
 }
 
-provider "cloudflare" {
-  credential = "mip5i4surNDvO9xIpaCWq9Nh9BrjUKYOwMZrVZX"
-}
+provider "cloudflare" {}
 
 resource "aws_s3_bucket" "site" {
   bucket = var.site_domain
