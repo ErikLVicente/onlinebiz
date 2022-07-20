@@ -23,7 +23,7 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.S3_BUCKET_REGION }}
-          CLOUDFLARE_API_TOKEN: ${{secrets.CLOUDFLARE_API_TOKEN}}
+          
       - name: 'Init'
         run: |
           terraform init -upgrade
@@ -58,3 +58,4 @@ jobs:
   #       run: yarn build
   #     - name: Deploy
   #       run: aws s3 sync ./website s3://onlinebiz.com.br
+  #
