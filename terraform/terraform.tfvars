@@ -1,3 +1,4 @@
 aws_region             = "us-west-2"
 site_domain            = "onlinebiz.com.br"
-cloudflare_api_token   = "mip5i4surNDvO9xIpaCWq9Nh9BrjUKYOwMZrVZX"
+cloudflare_api_token   = "ilgLAvIzKv3yC5t6dwKK9ZQag5W5QAEMQwAgXbXV"
+cloudflare_email       = "erikdelimavicente@gmail.com"
