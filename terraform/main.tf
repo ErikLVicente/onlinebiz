@@ -3,9 +3,8 @@ provider "aws" {
 }
 
 provider "cloudflare" {
-  email   = "erikdelimavicente@gmail.com"
-  api_key = "ilgLAvIzKv3yC5t6dwKK9ZQag5W5QAEMQwAgXbXV"
-  account_id ="0fe5bf364e11b5cfbfe8e419c51b74a6"
+  email   = var.cloudflare_email
+  api_token = var.cloudflare_api_token
 }
 
 resource "aws_s3_bucket" "site" {
