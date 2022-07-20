@@ -9,7 +9,12 @@ variable "site_domain" {
   description = "The domain name to use for the static site"
 }
 
+variable "cloudflare_email" {
+  type        = string
+  description = "clouflare email address"
+}
+
 variable "cloudflare_api_token" {
   type        = string
-  description = "cloudflare_token"
+  description = "cloudflare api token"
 }
