@@ -66,6 +66,14 @@ resource "aws_s3_bucket_website_configuration" "www" {
   }
 }
 
+terraform {
+  backend "s3" {
+    bucket = "aws_s3_bucket.site.id"
+    key    = "path/to/my/key"
+    region = "us-west-2"
+  }
+}
+
 data "cloudflare_zones" "domain" {
   filter {
     name = var.site_domain
@@ -91,3 +99,4 @@ resource "cloudflare_record" "www" {
   ttl     = 1
   proxied = true
 }
+
