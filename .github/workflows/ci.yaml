@@ -32,10 +32,4 @@ jobs:
         run: |
           terraform apply -var-file="terraform.tfvars" -auto-approve
         working-directory: terraform
-  
-  build:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Release to S3
-      run: aws s3 cp website/ s3://$(terraform output -raw website_bucket_name)/ --recursive
+ 
