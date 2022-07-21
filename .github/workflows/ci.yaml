@@ -26,7 +26,7 @@ jobs:
           
       - name: 'Init'
         run: |
-          terraform init
+          terraform init -reconfigure
         working-directory: terraform
       - name: 'Terraform apply'
         run: |
