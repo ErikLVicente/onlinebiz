@@ -68,7 +68,7 @@ resource "aws_s3_bucket_website_configuration" "www" {
 
 terraform {
   backend "s3" {
-    bucket = "aws_s3_bucket.site.id"
+    bucket = aws_s3_bucket.site.id
     key    = "path/to/my/key"
     region = "us-west-2"
   }
