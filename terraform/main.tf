@@ -74,31 +74,31 @@ terraform {
   }
 }
 
-data "cloudflare_zones" "domain" {
-  filter {
-    name = var.site_domain
-  }
-}
+# data "cloudflare_zones" "domain" {
+#   filter {
+#     name = var.site_domain
+#   }
+# }
 
-resource "cloudflare_record" "site_cname" {
-  zone_id = data.cloudflare_zones.domain.zones[0].id
-  name    = var.site_domain
-  value   = aws_s3_bucket_website_configuration.site.website_endpoint
-  type    = "CNAME"
+# resource "cloudflare_record" "site_cname" {
+#   zone_id = data.cloudflare_zones.domain.zones[0].id
+#   name    = var.site_domain
+#   value   = aws_s3_bucket_website_configuration.site.website_endpoint
+#   type    = "CNAME"
 
-  ttl     = 1
-  proxied = true
-}
+#   ttl     = 1
+#   proxied = true
+# }
 
-resource "cloudflare_record" "www" {
-  zone_id = data.cloudflare_zones.domain.zones[0].id
-  name    = "www"
-  value   = var.site_domain
-  type    = "CNAME"
-
-  ttl     = 1
-  proxied = true
-}
+# resource "cloudflare_record" "www" {
+#   zone_id = data.cloudflare_zones.domain.zones[0].id
+#   name    = "www"
+#   value   = var.site_domain
+#   type    = "CNAME"
+  
+#   ttl     = 1
+#   proxied = true
+# }
 
 resource "aws_s3_object" "dist" {
   for_each = fileset("/home/erikvicente/git/onlinebiz/website", "*")
