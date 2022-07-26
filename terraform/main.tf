@@ -157,5 +157,5 @@ for_each = fileset("../website/", "*")
 bucket = aws_s3_bucket.www.id
 key = each.value
 source = "../website/${each.value}"
-etag = filemd5("/${each.value}")
+etag = filemd5("../website/${each.value}")
 }
