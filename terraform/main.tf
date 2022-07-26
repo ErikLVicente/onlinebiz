@@ -100,12 +100,19 @@ terraform {
 #   proxied = true
 # }
 
-resource "aws_s3_object" "dist" {
-  for_each = fileset("/home/erikvicente/git/onlinebiz/website", "*")
+# resource "aws_s3_object" "dist" {
+#   for_each = fileset("/home/erikvicente/git/onlinebiz/website", "*")
 
+#   bucket = aws_s3_bucket.www.id
+#   key    = each.value
+#   source = "/home/erikvicente/git/onlinebiz/website/${each.value}"
+#   # etag makes the file update when it changes; see https://stackoverflow.com/questions/56107258/terraform-upload-file-to-s3-on-every-apply
+#   etag   = filemd5("/home/erikvicente/git/onlinebiz/website/${each.value}")
+# }
+
+resource "aws_s3_bucket_object" "file_upload" {
   bucket = aws_s3_bucket.www.id
   key    = each.value
   source = "/home/erikvicente/git/onlinebiz/website/${each.value}"
-  # etag makes the file update when it changes; see https://stackoverflow.com/questions/56107258/terraform-upload-file-to-s3-on-every-apply
-  etag   = filemd5("/home/erikvicente/git/onlinebiz/website/${each.value}")
+  etag   = "${filemd5("/home/erikvicente/git/onlinebiz/website/${each.value}")}"
 }
