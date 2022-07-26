@@ -152,16 +152,10 @@ terraform {
 # }
 
 # Upload an object
-resource "aws_s3_bucket_object" "object" {
-
-  bucket = "www.${var.site_domain}"
-
-  key    = "profile"
-
-  acl    = "public-read"  # or can be "public-read"
-
-  source = "../website/index.html"
-
-  etag = filemd5("index.html")
-
+resource "aws_s3_bucket_object" "object1" {
+for_each = fileset("../website/", "*")
+bucket = aws_s3_bucket.b1.id
+key = each.value
+source = "../website/${each.value}"
+etag = filemd5("/${each.value}")
 }
