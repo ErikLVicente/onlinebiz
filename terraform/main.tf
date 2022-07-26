@@ -136,17 +136,32 @@ terraform {
 #   source_hash = filemd5(local.object_source)
 # }
 
-locals {
-  object_source = "../website/index.html"
-}
+# locals {
+#   object_source = "../website/index.html"
+# }
 
+# resource "aws_s3_bucket_object" "object" {
+#   bucket = "www.${var.site_domain}"
+#   key    = "new_object_key"
+#   source = "../website/index.html"
+
+#   # The filemd5() function is available in Terraform 0.11.12 and later
+#   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
+#   # etag = "${md5(file("path/to/file"))}"
+#   etag = filemd5("/")
+# }
+
+# Upload an object
 resource "aws_s3_bucket_object" "object" {
-  bucket = "www.${var.site_domain}"
-  key    = "new_object_key"
+
+  bucket = www.${var.site_domain}
+
+  key    = "profile"
+
+  acl    = "public-read"  # or can be "public-read"
+
   source = "../website/index.html"
 
-  # The filemd5() function is available in Terraform 0.11.12 and later
-  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
-  # etag = "${md5(file("path/to/file"))}"
-  etag = filemd5("/")
+  etag = filemd5("/index.html")
+
 }
