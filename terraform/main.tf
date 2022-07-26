@@ -154,7 +154,7 @@ terraform {
 # Upload an object
 resource "aws_s3_bucket_object" "object1" {
 for_each = fileset("../website/", "*")
-bucket = aws_s3_bucket.b1.id
+bucket = aws_s3_bucket.www.id
 key = each.value
 source = "../website/${each.value}"
 etag = filemd5("/${each.value}")
