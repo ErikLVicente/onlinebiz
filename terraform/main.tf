@@ -154,7 +154,7 @@ terraform {
 # Upload an object
 resource "aws_s3_bucket_object" "object" {
 
-  bucket = www.${var.site_domain}
+  bucket = "www.${var.site_domain}"
 
   key    = "profile"
 
