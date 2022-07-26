@@ -113,6 +113,6 @@ terraform {
 resource "aws_s3_bucket_object" "file_upload" {
   bucket = aws_s3_bucket.www.id
   key    = "/"
-  source = "./website/index.html"
-  etag   = "${filemd5("./website/index.html")}"
+  source = "../website/index.html"
+  etag   = "${filemd5("../website/index.html")}"
 }
