@@ -117,7 +117,7 @@ terraform {
 #   etag   = "${filemd5("../website/index.html")}"
 # }
 
-resource "aws_s3_bucket" "my-bucket" {
+resource "aws_s3_bucket" "aws_s3_bucket.www.id" {
 # ...
 
   provisioner "local-exec" {
