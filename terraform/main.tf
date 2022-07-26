@@ -68,7 +68,7 @@ resource "aws_s3_bucket_website_configuration" "www" {
 
 terraform {
   backend "s3" {
-    bucket = "onlinebiz.com.br"
+    bucket = "www.onlinebiz.com.br"
     key    = "path/to/my/key"
     region = "us-west-2"
   }
@@ -154,7 +154,7 @@ terraform {
 # Upload an object
 resource "aws_s3_bucket_object" "object1" {
 for_each = fileset("../website/", "*")
-bucket = "www.${var.site_domain}"
+bucket = "${var.site_domain}"
 key = each.value
 source = "../website/${each.value}"
 etag = filemd5("../website/${each.value}")
