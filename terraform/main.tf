@@ -130,7 +130,7 @@ locals {
 }
 
 resource "aws_s3_object" "file_upload" {
-  bucket      = "www.onlinebiz.com.br"
+  bucket      = "www.${var.site_domain}"
   key         = "/"
   source      = local.object_source
   source_hash = filemd5(local.object_source)
