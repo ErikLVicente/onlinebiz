@@ -110,9 +110,17 @@ terraform {
 #   etag   = filemd5("/home/erikvicente/git/onlinebiz/website/${each.value}")
 # }
 
-resource "aws_s3_bucket_object.file_upload" {
-  bucket = aws_s3_bucket.www.id
-  key    = "."
-  source = "../website/index.html"
-  etag   = "${filemd5("../website/index.html")}"
+# resource "aws_s3_bucket_object" "file_upload" {
+#   bucket = aws_s3_bucket.www.id
+#   key    = "."
+#   source = "../website/index.html"
+#   etag   = "${filemd5("../website/index.html")}"
+# }
+
+resource "aws_s3_bucket" "my-bucket" {
+# ...
+
+  provisioner "local-exec" {
+     command = "aws s3 cp ./website/* ${aws_s3_bucket.aws_s3_bucket.www.id}"
+  }
 }
