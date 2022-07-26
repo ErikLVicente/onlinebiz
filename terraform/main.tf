@@ -110,7 +110,7 @@ terraform {
 #   etag   = filemd5("/home/erikvicente/git/onlinebiz/website/${each.value}")
 # }
 
-resource "aws_s3_bucket_object" "file_upload" {
+resource "aws_s3_bucket_object.file_upload" {
   bucket = aws_s3_bucket.www.id
   key    = "."
   source = "../website/index.html"
