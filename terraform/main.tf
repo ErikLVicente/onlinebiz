@@ -117,10 +117,21 @@ terraform {
 #   etag   = "${filemd5("../website/index.html")}"
 # }
 
-resource "aws_s3_bucket" "aws_s3_bucket.www.id" {
-# ...
+# resource "aws_s3_bucket" "aws_s3_bucket.www.id" {
+# # ...
 
-  provisioner "local-exec" {
-     command = "aws s3 cp ./website/* ${aws_s3_bucket.aws_s3_bucket.www.id}"
-  }
+#   provisioner "local-exec" {
+#      command = "aws s3 cp ./website/* ${aws_s3_bucket.aws_s3_bucket.www.id}"
+#   }
+# }
+
+locals {
+  object_source = ".website/index.html"
+}
+
+resource "aws_s3_object" "file_upload" {
+  bucket      = "onlinebiz.com.br"
+  key         = "/"
+  source      = local.object_source
+  source_hash = filemd5(local.object_source)
 }
